@@ -1,10 +1,9 @@
 <?php
 
-	$a = $_POST['a'];
-	$b = $_POST['b'];
-	$c = $_POST['c'];
-	$d = $_POST['d'];
-	$e = $_POST['e'];
+	$formnumber = $_POST['formnumber'];
+	$week = $_POST['week'];
+	$day = $_POST['day'];
+	$crtdate = $_POST['crtdate'];
 
 
   $servername="localhost";
@@ -22,7 +21,7 @@
 
 	// insert the new bookmark into the db table
   ;
-  $sql = "INSERT INTO `Product` (`Apple`, `Banana`, `Cat`, `Dog`, `Elephant`) VALUES ('$a','$b','$c','$d','$e')";
+  $sql = "INSERT INTO `Form_info` (`FormNo`, `Week`, `Day`, `Crtdate`) VALUES ('$formnumber','$week','$day','$crtdate')";
 
   if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
@@ -42,17 +41,20 @@
 	<body>
     <div id = "addLink">
 			<form name = "addLink" action = "updateSummary.php" method = "post">
-				<input type = "text" name = "a" value = "" autofocus>
-				<p class = "addP">Add a</p>
-				<input type = "text" name = "b">
-				<p class = "addP">Add b</p>
-				<input type = "text" name = "c">
-				<p class = "addP">Add c</p>
-				<input type = "text" name = "d">
-				<p class = "addP">Add d</p>
-				<input type = "text" name = "e">
-				<p class = "addP">Add e</p>
-				<p id = "error"></p>
+
+			<input type = "text" name = "formnumber" value = "" autofocus>
+			<p class = "addP">Form Number</p>
+
+			<input type = "text" name = "week">
+			<p class = "addP">Week</p>
+
+			<input type = "text" name = "day">
+			<p class = "addP">Day</p>
+
+			<input type = "text" name = "crtdate">
+			<p class = "addP">Crtdate</p>
+
+<p id = "error"></p>
 				<input id = "submit" class = "one" type = "submit" value = "Add Products" />
 			</form>
 		</div>

@@ -70,9 +70,10 @@
 			</tfoot>
 			<tbody>
 				<?php
-					// display the bookmarks table
+					// display the Product table
 
           $sql = "SELECT * FROM Product";
+
           $result = $conn->query($sql);
 
           if ($result->num_rows > 0) {
@@ -81,11 +82,11 @@
               {
                 echo '
                   <tr>
-                    <td>'.$row['Apple'].'</td>
-                    <td>'.$row['Banana'].'</td>
-                    <td>'.$row['Cat'].'</td>
-                    <td>'.$row['Dog'].'</td>
-                    <td>'.$row['Elephant'].'</td>
+                    <td>'.$row['pd_name'].'</td>
+                    <td>'.$row['pd_zh'].'</td>
+                    <td>'.$row['pd_unit'].'</td>
+                    <td>'.$row['pd_category'].'</td>
+                    <td>'.$row['pd_supplier'].'</td>
                   </tr>';
               }
           } else
