@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2017 at 07:06 PM
+-- Generation Time: Jul 02, 2017 at 08:39 PM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -31,9 +31,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `form_detail` (
   `ID` int(11) NOT NULL,
   `formid` int(11) NOT NULL,
-  `productid` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `productid` varchar(32) NOT NULL,
   `Quantityinput` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -44,18 +44,18 @@ CREATE TABLE `form_detail` (
 CREATE TABLE `form_info` (
   `ID` int(11) NOT NULL,
   `FormNo` int(11) NOT NULL,
-  `Week` text COLLATE utf8_unicode_ci NOT NULL,
-  `Day` text COLLATE utf8_unicode_ci NOT NULL,
+  `Week` text NOT NULL,
+  `Day` text NOT NULL,
   `Crtdate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `form_info`
 --
 
 INSERT INTO `form_info` (`ID`, `FormNo`, `Week`, `Day`, `Crtdate`) VALUES
-(0, 0, '2', '3', '0000-00-00'),
-(1, 1, '0000-00-00', '0000-00-00', '2017-06-26');
+(1, 0, '2', '3', '0000-00-00'),
+(2, 3, '4', '5', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -65,16 +65,16 @@ INSERT INTO `form_info` (`ID`, `FormNo`, `Week`, `Day`, `Crtdate`) VALUES
 
 CREATE TABLE `product` (
   `pd_id` int(4) NOT NULL,
-  `pd_cd` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `pd_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `pd_zh` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `pd_unit` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `pd_cd` varchar(30) NOT NULL,
+  `pd_name` varchar(30) NOT NULL,
+  `pd_zh` text NOT NULL,
+  `pd_unit` varchar(10) NOT NULL,
   `pd_dis` tinyint(1) NOT NULL DEFAULT '0',
   `pd_cost` decimal(11,0) NOT NULL,
-  `pd_supplier` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `pd_category` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `pd_descri` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `pd_supplier` varchar(30) NOT NULL,
+  `pd_category` varchar(30) NOT NULL,
+  `pd_descri` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `product`
@@ -109,6 +109,11 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `form_info`
+--
+ALTER TABLE `form_info`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `product`
 --

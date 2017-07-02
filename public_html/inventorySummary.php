@@ -10,6 +10,7 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
+  mysqli_set_charset($conn,"utf8");
   echo "Connected successfully";
 ?>
 
@@ -54,7 +55,8 @@
 		<table id="rounded-corner" summary="Bookmarks Table">
 			<thead>
 				<tr>
-					<th scope="col" class="rounded-company">Apple</th>
+					<th scope="col" class="rounded-company">
+          </th>
 					<th scope="col" class="rounded-q1">Banana</th>
 					<th scope="col" class="rounded-q2">Cat</th>
 					<th scope="col" class="rounded-q3">Dog</th>
@@ -72,9 +74,8 @@
 				<?php
 					// display the Product table
 
-          $sql = "SELECT * FROM Product";
-
-          $result = $conn->query($sql);
+          $sql1 = "SELECT * FROM Product";
+          $result = $conn->query($sql1);
 
           if ($result->num_rows > 0) {
               // output data of each row
