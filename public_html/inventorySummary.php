@@ -74,7 +74,7 @@
 				<?php
 					// display the Product table
 
-          $sql1 = "SELECT * FROM Product";
+          $sql1 = "SELECT * FROM product";
           $result = $conn->query($sql1);
 
           if ($result->num_rows > 0) {
