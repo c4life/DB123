@@ -17,37 +17,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<style type = "text/css">
-			#rounded-corner
-			{	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-				font-size: medium;
-				width: 100%;
-				text-align: left;
-				border-collapse: collapse;}
-			#rounded-corner thead th.rounded-company
-			{	background: #b9c9fe url('left.png') left -1px no-repeat;}
-			#rounded-corner thead th.rounded-q4
-			{	background: #b9c9fe url('right.png') right -1px no-repeat;}
-			#rounded-corner th
-			{	padding: 8px;
-				font-weight: normal;
-				font-size: medium;
-				color: #039;
-				background: #b9c9fe;}
-			#rounded-corner td
-			{	padding: 8px;
-				background: #e8edff;
-				border-top: 1px solid #fff;
-				color: #669;}
-			#rounded-corner tfoot td.rounded-foot-left
-			{	background: #e8edff url('botleft.png') left bottom no-repeat;}
-			#rounded-corner tfoot td.rounded-foot-right
-			{	background: #e8edff url('botright.png') right bottom no-repeat;}
-			#rounded-corner tbody tr:hover td
-			{	background: #d0dafd;}
-			a	{	text-decoration: none;
-					color: #669;}
-		</style>
+  <style type = "text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    </style>
 		<script type = "text/javascript">
 		</script>
 	</head>

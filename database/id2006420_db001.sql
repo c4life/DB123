@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2017 at 07:30 AM
+-- Generation Time: Jul 07, 2017 at 08:34 PM
 -- Server version: 10.1.24-MariaDB
 -- PHP Version: 7.1.6
 
@@ -46,7 +46,7 @@ CREATE TABLE `billofmeal` (
 CREATE TABLE `form_detail` (
   `id` int(11) NOT NULL,
   `formid` int(11) NOT NULL,
-  `productid` varchar(32) NOT NULL,
+  `productcd` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `quantityinput` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -57,13 +57,19 @@ CREATE TABLE `form_detail` (
 --
 
 CREATE TABLE `form_info` (
-  `id` int(11) NOT NULL,
   `formno` int(11) NOT NULL,
-  `week` text NOT NULL,
-  `day` text NOT NULL,
-  `editor` text NOT NULL,
+  `week` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
+  `editor` varchar(32) NOT NULL,
   `crtdate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `form_info`
+--
+
+INSERT INTO `form_info` (`formno`, `week`, `day`, `editor`, `crtdate`) VALUES
+(2, 1, 2, '3', '2017-07-11');
 
 -- --------------------------------------------------------
 
@@ -86,8 +92,8 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`id`, `pd_cd`, `targetlevel`, `onorder`, `minorderquantity`, `available`, `belowtargetlevel`) VALUES
-(1, 'A001', 0, 0, 0, 4, 0),
-(2, 'A009', 0, 0, 0, 4, 0);
+(1, 'A001', 0, 8, 0, 30, 0),
+(2, 'A009', 0, 7, 0, 11, 0);
 
 -- --------------------------------------------------------
 
@@ -145,7 +151,7 @@ ALTER TABLE `form_detail`
 -- Indexes for table `form_info`
 --
 ALTER TABLE `form_info`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`formno`);
 
 --
 -- Indexes for table `inventory`
@@ -164,10 +170,15 @@ ALTER TABLE `product`
 --
 
 --
+-- AUTO_INCREMENT for table `form_detail`
+--
+ALTER TABLE `form_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+--
 -- AUTO_INCREMENT for table `form_info`
 --
 ALTER TABLE `form_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `formno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `inventory`
 --

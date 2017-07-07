@@ -1,5 +1,4 @@
 <?php
-	$formnumber = $_POST['formnumber'];
 	$week = $_POST['week'];
 	$day = $_POST['day'];
 	$crtdate = $_POST['crtdate'];
@@ -21,8 +20,8 @@
 
 	// insert the new form into the db table
   ;
-  $sql = "INSERT INTO `form_info` (`formno`, `week`, `day`, `crtdate`,`editor`)
-  VALUES ('$formnumber','$week','$day','$crtdate','$editor')";
+  $sql = "INSERT INTO `form_info` (`week`, `day`, `crtdate`,`editor`)
+  VALUES ('$week','$day','$crtdate','$editor')";
 
   if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
@@ -34,46 +33,79 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	<style type = "text/css">
-		#rounded-corner
-		{	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-			font-size: medium;
-			width: 100%;
-			text-align: left;
-			border-collapse: collapse;}
-		#rounded-corner thead th.rounded-company
-		{	background: #b9c9fe url('left.png') left -1px no-repeat;}
-		#rounded-corner thead th.rounded-q4
-		{	background: #b9c9fe url('right.png') right -1px no-repeat;}
-		#rounded-corner th
-		{	padding: 8px;
-			font-weight: normal;
-			font-size: medium;
-			color: #039;
-			background: #b9c9fe;}
-		#rounded-corner td
-		{	padding: 8px;
-			background: #e8edff;
-			border-top: 1px solid #fff;
-			color: #669;}
-		#rounded-corner tfoot td.rounded-foot-left
-		{	background: #e8edff url('botleft.png') left bottom no-repeat;}
-		#rounded-corner tfoot td.rounded-foot-right
-		{	background: #e8edff url('botright.png') right bottom no-repeat;}
-		#rounded-corner tbody tr:hover td
-		{	background: #d0dafd;}
-		a	{	text-decoration: none;
-				color: #669;}
-	</style>
-		<script type = "text/javascript">
-		</script>
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<script type = "text/javascript">
+
+	function addRow() {
+  //原来的行数    比如：此处获得表格的行数是5，则每一行对应的index是0~4，所以下面在insertRow时，使用的是表格的当前行数
+      var currentRows = document.getElementById("rounded-corner").rows.length;
+        var insertTr = document.getElementById("rounded-corner").insertRow(currentRows);
+	        var insertTd = insertTr.insertCell(0);
+							insertTd.style.textAlign="left";
+	            insertTd.innerHTML = "<input name='productcd[]' value='' class='input_M'/>";
+
+	            insertTd = insertTr.insertCell(1);
+	            insertTd.style.textAlign="left";
+	            insertTd.innerHTML = "<input name='pd_zh' value='' type='text' class='Wdate' onfocus='WdatePicker()' >";
+
+	            insertTd = insertTr.insertCell(2);
+	            insertTd.style.textAlign="left";
+	            insertTd.innerHTML = "<input id='limit"+currentRows+"' name='available[]' value='' class='input_M'/>";
+
+							insertTd = insertTr.insertCell(3);
+	            insertTd.style.textAlign="left";
+	            insertTd.innerHTML = "<input id='limit"+currentRows+"' name='quantityinput[]' value='' class='input_M'/>";
+							insertTd = insertTr.insertCell(4);
+	            insertTd.style.textAlign="left";
+	            insertTd.innerHTML = "<input id='limit"+currentRows+"' name='pd_unit[]' value='' class='input_M'/>";
 
 
-	</head>
-	<body>
-
+ }
+	</script>
+</head>
+<body>
+	<div id="page">
+		<?php include ('header.php'); ?>
+		<form name = "addLink" action = "updatesummary.php" method = "post">
 			<table id="rounded-corner" summary="form_info">
 				<thead>
+					<tr>
+						<th scope="col" class="rounded-q1">ProductID</th>
+						<th scope="col" class="rounded-q2">进/出量</th>
+						<th scope="col" class="rounded-q3">Inventory</th>
+						<th scope="col" class="rounded-q4">中文名</th>
+						<th scope="col" class="rounded-q5">单位</th>
+					</tr>
+				</thead>
+				<tr>
+						<td><input name="productcd[]" type="text" /></td>
+						<td><input name="quantityinput[]" type="text" /></td>
+				</tr>
+
+				<tr>
+						<td><input name="productcd[]" type="text" /></td>
+						<td><input name="quantityinput[]" type="text" /></td>
+				</tr>
+
+				<tr>
+						<td><input name="productcd[]" type="text" /></td>
+						<td><input name="quantityinput[]" type="text" /></td>
+				</tr>
+				<tr>
+					<p>需要用输入productcd作为变量 显示 中文，库存，（添加行无法录入数据库）					</p>
+				</tr>
+			</table>
+				<input id = "submit" class = "one" type = "submit" name="submit" value = "Add Products" />
+				<input type="button" value="添 加 行" class="button_add" onclick="javascript:addRow()">
+	</form>
+<!--
+	<p>
+	NO sense below
+	</p>
+		<table id="rounded-corner" summary="form_info">
+
+				<thead>
+
 					<tr>
 						<th scope="col" class="rounded-q1">Product Name</th>
 						<th scope="col" class="rounded-q2">中文名</th>
@@ -82,28 +114,30 @@
 						<th scope="col" class="rounded-q5">单位</th>
 					</tr>
 				</thead>
-					<tfoot>
+				<tfoot>
 					<tr>
 						<td colspan="4" class="rounded-foot-left"><em id = "time">
 							Bookmarks Upload Successful!</em></td>
+						<td><input type="button" value="添 加 行" class="button_add" onclick="javascript:addRow()"></td>
 						<td class="rounded-foot-right">&nbsp;</td>
 					</tr>
 				</tfoot>
-				<tbody>
-					<?php
+			  <tbody>
+							-->
+							<!--<?php
 							// display the Product table
 							$sql1 = "SELECT product.pd_cd, product.pd_name, product.pd_zh, inventory.available , product.pd_unit
 							FROM product
-							left join inventory On product.pd_id = inventory.id ";
+							left join inventory On product.productcd = inventory.id ";
 							$result = $conn->query($sql1);
-							$formnumber = $_POST['formnumber'];
+							//$formnumber = $_POST['formnumber'];//
 							if ($result->num_rows > 0) {
 									// output data of each row
 									while($row = $result->fetch_assoc())
 									{
 										echo '
 											<tr>
-												<td>'.$row['pd_name'].'</td>
+												<td>'.$row['productcd'].'</td>
 												<td>'.$row['pd_zh'].'</td>
 												<td>'.$row['available'].'</td>
 												<td><input type = "text" name = "quantityinput"></td>
@@ -116,10 +150,11 @@
 									echo "0 results";
 								?>
 
-				</tbody>
-			</table>
-<form name = "addLink" action = "updatesummary.php" method = "post">
-<input id = "submit" class = "one" type = "submit" value = "Add Products" />
-</form>
+				 </tbody>
+		</table>
+
+	-->
+
+</div>
 	</body>
 </html>

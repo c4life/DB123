@@ -18,20 +18,8 @@
 <!-- webpage content goes here in the body -->
 
 	<div id="page">
-		<div id="headline">
+    <?php include ('header.php'); ?>
 
-
-		<div id="logo">
-			<h1><a href="/" id="logoLink">UNNAMED APP</a></h1>
-		</div>
-		<div id="nav">
-			<ul>
-				<li><a href="/">TAB A</a></li>
-				<li><a href="/">TAB B</a></li>
-				<li><a href="/">TAB C</a></li>
-			</ul>
-		</div>
-		</div>
 		<div id="content">
 			<ul>
 			<li><a href="inventorySummary.php">总库存</a></li>
