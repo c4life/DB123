@@ -14,6 +14,22 @@ if ($conn->connect_error) {
 mysqli_set_charset($conn,"utf8");
 echo "Connected successfully";
 
+
+//-----------------------------------------------
+// how to get your formno
+	$sql = "SELECT * FROM form_info";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc())
+			{
+				echo 'formno = '.$row['formno']."\t";	// here is your formnoes
+			}
+	} else
+			echo "no form exists";	// there is no form exists in your database
+//-----------------------------------------------
+
 $formno = 2;
 echo '<p>
 不能从数据库取出表格编号 Formno，因此暂时定义 Formno固定值为2，求解决这个问题</p>';
