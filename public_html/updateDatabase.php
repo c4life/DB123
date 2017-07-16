@@ -38,18 +38,52 @@
 
 	function addRow() {
   //原来的行数    比如：此处获得表格的行数是5，则每一行对应的index是0~4，所以下面在insertRow时，使用的是表格的当前行数
-      var currentRows = document.getElementById("rounded-corner").rows.length;
-      var insertTr = document.getElementById("rounded-corner").insertRow(currentRows);
-	    var insertTd = insertTr.insertCell(0);
-							insertTd.style.textAlign="left";
-	            // insertTd.innerHTML = "<input name='productcd[]' value='' class='input_M'/>";
-	            insertTd.innerHTML = "<input name='productcd[]' type='text' />";
+			// var tableW = document.getElementById("rounded-corner");
+      // var currentRows = tableW.rows.length;
 
-							insertTd = insertTr.insertCell(1);
-	            insertTd.style.textAlign="left";
-	            insertTd.innerHTML = "<input name='quantityinput[]' type='text' />";
-	            // insertTd.innerHTML = "<input id='limit"+currentRows+"' name='quantityinput[]' value='' class='input_M'/>";
+			var temp = document.getElementById("temp");
+			// temp.innerHTML = "Current row size = " + currentRows;
 
+      // var insertTr = tableW.insertRow(currentRows);
+			// temp.innerHTML += "\tTable rows size = " + tableW.rows.length;
+
+      // var insertTd = insertTr.insertCell(0);
+			//insertTd.style.textAlign="left";
+      // insertTd.innerHTML = "<input name='productcd[]' value='' class='input_M'/>";
+      // insertTd.innerHTML = '<input name="productcd[]" type="text" />';
+
+			// insertTd = insertTr.insertCell(1);
+      //insertTd.style.textAlign="left";
+      // insertTd.innerHTML = '<input name="quantityinput[]" type="text" />';
+      // insertTd.innerHTML = "<input id='limit"+currentRows+"' name='quantityinput[]' value='' class='input_M'/>";
+
+			var names = ['productcd[]', 'quantityinput[]'];
+			var table = document.getElementById("rounded-corner");
+
+
+    	var rowCount = table.rows.length;
+
+			temp.innerHTML = "Current row size = " + rowCount;
+
+    	var row = table.insertRow(rowCount);
+    	var colCount = table.rows[0].cells.length;
+    	// var colCount = 2;
+
+	    for (var i=0; i<colCount; i++)
+			{
+	        var newcell = row.insertCell(i);
+	        var newentry = document.createElement('input');
+	        newentry.type = "text";
+
+	        // set name
+	        newentry.name = names[i];
+
+	        newcell.appendChild(newentry);
+	    }
+
+
+			temp.innerHTML += "\tAfter insertCell = " + table.rows.length;
+// document.getElementById("temp").innerHTML = document.getElementById("rounded-corner").rows.length;
 
  }
 	</script>
@@ -57,7 +91,7 @@
 <body>
 	<div id="page">
 		<?php include ('header.php'); ?>
-		<p>需要用输入productcd作为变量 显示 中文，库存，（添加行无法录入数据库）					</p>
+		<p id="temp">需要用输入productcd作为变量 显示 中文，库存，（添加行无法录入数据库</p>
 		<form name = "addLink" action = "updatesummary.php" method = "post">
 			<table id="rounded-corner" summary="form_info">
 				<thead>

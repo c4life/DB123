@@ -34,23 +34,55 @@ echo "Connected successfully";
 echo '<p>
 不能从数据库取出表格编号 Formno，因此暂时定义 Formno固定值为2，求解决这个问题</p>';
 //update form detail(since I have bug here I don't know how to do it)
-if (isset($_POST['submit'])) {
+echo "_post's size = ".count($_POST);
+
+$productcds = $_POST['productcd'];
+$quantityinputs = $_POST['quantityinput'];
+
+echo "\t product size = ".count($productcds);
 
 $i = 0;
-		foreach ($_POST as $val) {
-    $productcd = $_POST['productcd'][$i];
-    $quantityinput = $_POST['quantityinput'][$i];
-    $sql1="INSERT INTO form_detail (formid, productcd, quantityinput)
-    VALUES ('$formno', '$productcd', '$quantityinput')";
-    if ($conn->query($sql1) === TRUE) {
-        echo "New record created successfully";
-				echo $productcd;
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-$i++;
+while ($i < count($productcds))
+{
+	$productcd = $productcds[$i];
+	echo "Get productcd[i] = ".$productcd."\t";
+	$quantityinput = $quantityinputs[$i];
+	$sql1="INSERT INTO form_detail (formid, productcd, quantityinput) VALUES ('$formno', '$productcd', '$quantityinput')";
+
+	if ($conn->query($sql1) === TRUE)
+	{
+		echo "New record created successfully"."\t";
+		echo $productcd."\n";
+	}
+	else
+	{
+		echo "Error: " . $sql . "<br>" . $conn->error;
+	}
+	$i++;
 }
-}
+
+// if (isset($_POST['submit']))
+// {
+// 	$i = 0;
+// 	foreach ($_POST as $val)
+// 	{
+// 		$productcd = $_POST['productcd'][$i];
+// 		echo "Get productcd[i] = ".$productcd."\t";
+// 		$quantityinput = $_POST['quantityinput'][$i];
+// 		$sql1="INSERT INTO form_detail (formid, productcd, quantityinput) VALUES ('$formno', '$productcd', '$quantityinput')";
+//
+// 		if ($conn->query($sql1) === TRUE)
+// 		{
+// 			echo "New record created successfully"."\t";
+// 			echo $productcd."\n";
+// 		}
+// 		else
+// 		{
+// 			echo "Error: " . $sql . "<br>" . $conn->error;
+// 		}
+// 		$i++;
+// 	}
+// }
 
 // update inventory
 $sql2 = 'update inventory,form_detail
