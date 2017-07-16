@@ -42,22 +42,13 @@
         var insertTr = document.getElementById("rounded-corner").insertRow(currentRows);
 	        var insertTd = insertTr.insertCell(0);
 							insertTd.style.textAlign="left";
-	            insertTd.innerHTML = "<input name='productcd[]' value='' class='input_M'/>";
+	            // insertTd.innerHTML = "<input name='productcd[]' value='' class='input_M'/>";
+	            insertTd.innerHTML = "<input name='productcd[]' type='text' />";
 
-	            insertTd = insertTr.insertCell(1);
+							insertTd = insertTr.insertCell(1);
 	            insertTd.style.textAlign="left";
-	            insertTd.innerHTML = "<input name='pd_zh' value='' type='text' class='Wdate' onfocus='WdatePicker()' >";
-
-	            insertTd = insertTr.insertCell(2);
-	            insertTd.style.textAlign="left";
-	            insertTd.innerHTML = "<input id='limit"+currentRows+"' name='available[]' value='' class='input_M'/>";
-
-							insertTd = insertTr.insertCell(3);
-	            insertTd.style.textAlign="left";
-	            insertTd.innerHTML = "<input id='limit"+currentRows+"' name='quantityinput[]' value='' class='input_M'/>";
-							insertTd = insertTr.insertCell(4);
-	            insertTd.style.textAlign="left";
-	            insertTd.innerHTML = "<input id='limit"+currentRows+"' name='pd_unit[]' value='' class='input_M'/>";
+	            insertTd.innerHTML = "<input name='quantityinput[]' type='text' />";
+	            // insertTd.innerHTML = "<input id='limit"+currentRows+"' name='quantityinput[]' value='' class='input_M'/>";
 
 
  }
@@ -66,6 +57,7 @@
 <body>
 	<div id="page">
 		<?php include ('header.php'); ?>
+		<p>需要用输入productcd作为变量 显示 中文，库存，（添加行无法录入数据库）					</p>
 		<form name = "addLink" action = "updatesummary.php" method = "post">
 			<table id="rounded-corner" summary="form_info">
 				<thead>
@@ -90,9 +82,6 @@
 				<tr>
 						<td><input name="productcd[]" type="text" /></td>
 						<td><input name="quantityinput[]" type="text" /></td>
-				</tr>
-				<tr>
-					<p>需要用输入productcd作为变量 显示 中文，库存，（添加行无法录入数据库）					</p>
 				</tr>
 			</table>
 				<input id = "submit" class = "one" type = "submit" name="submit" value = "Add Products" />

@@ -17,20 +17,20 @@ echo "Connected successfully";
 
 //-----------------------------------------------
 // how to get your formno
-	$sql = "SELECT * FROM form_info";
+	$sql = "SELECT * FROM form_info order by form_info.formno DESC limit 1";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc())
 			{
-				echo 'formno = '.$row['formno']."\t";	// here is your formnoes
+				$formno = $row['formno'];	// here is your formnoes
+				echo "$formno";
 			}
 	} else
 			echo "no form exists";	// there is no form exists in your database
 //-----------------------------------------------
 
-$formno = 2;
 echo '<p>
 不能从数据库取出表格编号 Formno，因此暂时定义 Formno固定值为2，求解决这个问题</p>';
 //update form detail(since I have bug here I don't know how to do it)
@@ -44,6 +44,7 @@ $i = 0;
     VALUES ('$formno', '$productcd', '$quantityinput')";
     if ($conn->query($sql1) === TRUE) {
         echo "New record created successfully";
+				echo $productcd;
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
