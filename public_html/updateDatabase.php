@@ -39,8 +39,8 @@
 	function addRow() {
   //原来的行数    比如：此处获得表格的行数是5，则每一行对应的index是0~4，所以下面在insertRow时，使用的是表格的当前行数
       var currentRows = document.getElementById("rounded-corner").rows.length;
-        var insertTr = document.getElementById("rounded-corner").insertRow(currentRows);
-	        var insertTd = insertTr.insertCell(0);
+      var insertTr = document.getElementById("rounded-corner").insertRow(currentRows);
+	    var insertTd = insertTr.insertCell(0);
 							insertTd.style.textAlign="left";
 	            // insertTd.innerHTML = "<input name='productcd[]' value='' class='input_M'/>";
 	            insertTd.innerHTML = "<input name='productcd[]' type='text' />";
@@ -69,8 +69,21 @@
 						<th scope="col" class="rounded-q5">单位</th>
 					</tr>
 				</thead>
-				<tr>
-						<td><input name="productcd[]" type="text" /></td>
+				<!-- select product name and get product code -->
+						<td><select name="productcd[]">
+						<option value="">Select Product</option>
+						<?php
+						$s2="select * from product ";
+						$result2 = $conn->query($s2);
+						if ($result2->num_rows > 0) {
+
+						while($rw2=$result2->fetch_assoc())
+						{
+						?>
+						<option value="<?php echo $rw2['pd_cd']; ?>">
+						<?php echo $rw2['pd_name']; ?>
+					</option><?php } }?>
+						</select></td>
 						<td><input name="quantityinput[]" type="text" /></td>
 				</tr>
 
