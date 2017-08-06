@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<div id="page">
-		  <?php include ('header.php'); ?>
+		  <?php include ('../header.php'); ?>
 		<div id = "addLink" style="text-align: center">
 					<form name = "addLink" action = "updateDatabase.php" method = "post">
 						<p class = "addP">创建日期</p>

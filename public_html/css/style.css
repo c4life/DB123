@@ -23,8 +23,7 @@ body{
     font-family: arial; font-size: 80%; line-height: 1.2em; width: 100%; margin: 0; background: #403075;
 }
 /* you can put your code all in one line like above */
-#page{ max-width: : 1200px; margin: 100px;
-  color: white; }
+#page{ max-width: : 1200px;   color: white; }
 #headline {
   background-color: #eee;
 }
@@ -127,3 +126,12 @@ body{
 a	{	text-decoration: none;
     color: #669;}
 /* multiple styles seperated by a , */
+
+
+
+/*MSGBRD CSS*/
+.chip {
+
+}
+
+.

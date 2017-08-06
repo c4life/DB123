@@ -22,11 +22,11 @@
 
 		<div id="content">
 			<ul>
-			<li><a href="inventorySummary.php">总库存</a></li>
-			<li><a href="updateForm.php">出库单</a></li>
-			<li><a href="/">+</a></li>
+			<li><a href="inventory/inventorySummary.php">总库存</a></li>
+			<li><a href="inventory/updateForm.php">出库单</a></li>
+			<li><a href="msgbrd/login.php">留言板</a></li>
+      <li><a href="/">+</a></li>
 			<li><a href="/">-</a></li>
-			<li><a href="/"></a></li>
 			<li><a href="/"></a></li>
 			<li><a href="/"></a></li>
 		</ul>

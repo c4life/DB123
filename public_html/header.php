@@ -1,6 +1,6 @@
 <div id="headline">
 <div id="logo">
-  <h1><a href="/" id="logoLink">UNNAMED APP</a></h1>
+  <h1><a href="/c4life/index.php" id="logoLink">UNNAMED APP</a></h1>
 </div>
 <div id="nav">
   <ul>
