@@ -58,7 +58,7 @@ WHERE   product.pd_id = '$_POST[hidden]'";
               // output data of each row
               while($row = $result->fetch_assoc())
               {
-                echo '<form action=inventorysummary.php method=post>';
+                echo '<form action=inventorySummary.php method=post>';
                 echo '
                   <tr>
                     <td>'.$row['pd_name'].' </td>
