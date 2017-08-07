@@ -33,8 +33,8 @@ print <<< Form
     至
     <input type="date" name="date2" placeholder="日期">）
 <br>    共计消费++元（原价
-    <input type="number" name="amount" value="" placeholder="多少">GST++元，配送费
-    <input type="number" name="deliver" value=" placeholder="配送费"> 元），您的联系方式是
+    <input type="number" name="amount" step=".01" value="" placeholder="多少">GST++元，配送费
+    <input type="number" name="deliver" step=".01" value=" placeholder="配送费"> 元），您的联系方式是
 <br>
     <input type="text" name="phone" placeholder="电话">，您的配送地址是
     <input type="text" name="add" placeholder="地址">，如果以上信息核对无误，
