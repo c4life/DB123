@@ -1,0 +1,8 @@
+.line {
+   float: left;
+   margin: 10px;
+   padding: 10px;
+   max-width: 300px;
+   height: 100px;
+   border: 1px solid black;
+}

@@ -27,7 +27,7 @@
 			<li><a href="msgbrd/login.php">留言板</a></li>
       <li><a href="/">+</a></li>
 			<li><a href="/">-</a></li>
-			<li><a href="/"></a></li>
+			<li><a href="mobile/mobile.php">Mobile Responsive</a></li>
 			<li><a href="reply/reply.php">客服专用</a></li>
 		</ul>
 	</div>

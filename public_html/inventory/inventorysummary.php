@@ -17,11 +17,12 @@
 					<th scope="col" class="rounded-q1">Product Name</th>
 					<th scope="col" class="rounded-q2">中文名</th>
           <th scope="col" class="rounded-q3">库存数量</th>
+          <th scope="col" class="rounded-q8">更新</th>
 					<th scope="col" class="rounded-q4">单位</th>
 					<th scope="col" class="rounded-q5">分类</th>
           <th scope="col" class="rounded-q6">供应商</th>
           <th scope="col" class="rounded-q7"></th>
-          <th scope="col" class="rounded-q8">更新</th>
+
 
           </th>
 				</tr>
@@ -64,11 +65,11 @@ WHERE   product.pd_id = '$_POST[hidden]'";
                     <td>'.$row['pd_name'].' </td>
                     <td>'.$row['pd_zh'].' </td>
                     <td>'.'<input type = text name= available  value='.$row['available'].'> </td>
+                    <td><input type = submit name= update value= "update" >
                     <td>'.$row['pd_unit'].' </td>
                     <td>'.$row['pd_category'].' </td>
                     <td>'.$row['pd_supplier'].'</td>
                     <td>'.'<input type = hidden name= hidden  value='.$row["pd_id"].'></td>
-                    <td><input type = submit name= update value= "update" >
                     </td>
                   </tr>';
                 echo '</form>';

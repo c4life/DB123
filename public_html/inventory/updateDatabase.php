@@ -23,39 +23,25 @@ include_once "connection.php";
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script type = "text/javascript">
 	function addRow() {
-  //原来的行数    比如：此处获得表格的行数是5，则每一行对应的index是0~4，所以下面在insertRow时，使用的是表格的当前行数
-			// var tableW = document.getElementById("rounded-corner");
-      // var currentRows = tableW.rows.length;
+	var temp = document.getElementById("temp");
+	var names = ['pd_zh[]', 'available[]','pd_name[]','pd_unit[]','pd_id[]'];
+	var table = document.getElementById("rounded-corner");
+	var rowCount = table.rows.length;
+	//temp.innerHTML = "Current row size = " + rowCount;
+	var row = table.insertRow(rowCount);
+	var colCount = table.rows[0].cells.length;
+	for (var i=0; i<colCount; i++)
+	{
+			var newcell = row.insertCell(i);
+			var newentry = document.createElement('input');
+			newentry.type = "text";
 
-			var temp = document.getElementById("temp");
-			// temp.innerHTML = "Current row size = " + currentRows;
+			// set name
+			newentry.name = names[i];
 
-      // var insertTr = tableW.insertRow(currentRows);
-			// temp.innerHTML += "\tTable rows size = " + tableW.rows.length;
-
-      // var insertTd = insertTr.insertCell(0);
-			//insertTd.style.textAlign="left";
-      // insertTd.innerHTML = "<input name='productcd[]' value='' class='input_M'/>";
-      // insertTd.innerHTML = '<input name="productcd[]" type="text" />';
-
-			// insertTd = insertTr.insertCell(1);
-      //insertTd.style.textAlign="left";
-      // insertTd.innerHTML = '<input name="quantityinput[]" type="text" />';
-      // insertTd.innerHTML = "<input id='limit"+currentRows+"' name='quantityinput[]' value='' class='input_M'/>";
-
-			var names = ['productcd[]', 'quantityinput[]'];
-			var table = document.getElementById("rounded-corner");
-
-
-    	var rowCount = table.rows.length;
-
-			temp.innerHTML = "Current row size = " + rowCount;
-
-    	var row = table.insertRow(rowCount);
-    	var colCount = table.rows[0].cells.length;
-    	// var colCount = 2;
-
-	    for (var i=0; i<colCount; i++)
+			newcell.appendChild(newentry);
+	}
+	for (var i=1; i<colCount; i++)
 			{
 	        var newcell = row.insertCell(i);
 	        var newentry = document.createElement('input');
@@ -68,14 +54,13 @@ include_once "connection.php";
 	    }
 
 
-			temp.innerHTML += "\tAfter insertCell = " + table.rows.length;
+		//	temp.innerHTML += "\tAfter insertCell = " + table.rows.length;
 // document.getElementById("temp").innerHTML = document.getElementById("rounded-corner").rows.length;
 
  }
 	</script>
 </head>
 <body>
-	<div id="page">
 		<?php include ('../header.php'); ?>
 			<form name = "addLink" action = "updatesummary.php" method = "post">
 			<table id="rounded-corner" summary="form_info">
@@ -99,7 +84,7 @@ include_once "connection.php";
 	              while($row = $result->fetch_assoc())
 	              {
 	                echo '
-	                  <tr>
+	                  <tr id="temp">
 	                    <td>'.$row['pd_zh'].'</td>
 	                    <td>'.$row['available'].'</td>
 	                    <td><input name="quantityinput[]"type = "text"></td>
@@ -111,9 +96,9 @@ include_once "connection.php";
 	          } else
 	              echo "0 results";
 					?>
-
+				</table>
 				<input id = "submit" type = "submit" name="submit" value = "Add Products" />
-				<!-- <input type="button" value="添 加 行" class="button_add" onclick="javascript:addRow()"> -->
+				 <input type="button" value="添 加 行" class="button_add" onclick="javascript:addRow()">
 			</form>
 
 </div>
