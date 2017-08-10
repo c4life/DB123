@@ -2,6 +2,7 @@
 <head>
 <?php   include_once "configmsgbrd.php"; ?>
 <link rel="stylesheet" href="../css/style.css" type="text/css" />
+<meta name="viewport" content="width=device-width">
 </head>
 <body>
 <?php include ('../header.php'); ?>

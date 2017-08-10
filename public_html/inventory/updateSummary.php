@@ -55,6 +55,7 @@ echo "Error: " . $sql2 . "<br>" . $conn->error;
 ?>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>

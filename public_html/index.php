@@ -5,7 +5,7 @@
 <!-- your webpage info goes here -->
 
     <title>UNNAMED APP</title>
-
+  <meta name="viewport" content="width=device-width">
 	<meta name="author" content="C4LIFE" />
 	<meta name="description" content="UNFINISHED" />
 

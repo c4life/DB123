@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- <link rel="stylesheet" href="../css/style.css" type="text/css" /> -->
+	  <meta name="viewport" content="width=device-width">
+    <!-- <link rel="stylesheet" href="../css/style.css" type="text/css" /> -->
 </head>
 <body>
 <div id="page">

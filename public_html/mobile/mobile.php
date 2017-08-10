@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="mobile.css" type="text/css" />
+  <meta name="viewport" content="width=device-width">
 </head>
 <body>
 <h1>This is first tittle</h1>

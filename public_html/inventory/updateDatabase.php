@@ -20,6 +20,7 @@ include_once "connection.php";
 <!DOCTYPE html>
 <html>
 <head>
+	  <meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script type = "text/javascript">
 	function addRow() {
