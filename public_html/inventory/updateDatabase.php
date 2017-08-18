@@ -7,7 +7,7 @@
 include_once "connection.php";
 
 // insert the new form into the db table
-  $sql = "INSERT INTO `form_info` (`week`, `day`, `crtdate`,`editor`)
+   $sql = "INSERT INTO `form_info` (`week`, `day`, `crtdate`,`editor`)
   VALUES ('$week','$day','$crtdate','$editor')";
 
   if ($conn->query($sql) === TRUE) {
@@ -22,7 +22,16 @@ include_once "connection.php";
 <head>
 	  <meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
-	<script type = "text/javascript">
+	<script
+	  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+	<script>
+	$(document).ready(function(){
+		$("#product1").change(function(){
+			$("#product").load("data.txt");
+		});
+	});
 	function addRow() {
 	var temp = document.getElementById("temp");
 	var names = ['pd_zh[]', 'available[]','pd_name[]','pd_unit[]','pd_id[]'];
@@ -37,23 +46,12 @@ include_once "connection.php";
 			var newentry = document.createElement('input');
 			newentry.type = "text";
 
+
 			// set name
 			newentry.name = names[i];
 
 			newcell.appendChild(newentry);
 	}
-	for (var i=1; i<colCount; i++)
-			{
-	        var newcell = row.insertCell(i);
-	        var newentry = document.createElement('input');
-	        newentry.type = "text";
-
-	        // set name
-	        newentry.name = names[i];
-
-	        newcell.appendChild(newentry);
-	    }
-
 
 		//	temp.innerHTML += "\tAfter insertCell = " + table.rows.length;
 // document.getElementById("temp").innerHTML = document.getElementById("rounded-corner").rows.length;
@@ -74,7 +72,7 @@ include_once "connection.php";
 						<th scope="col" class="rounded-q5">单位</th>
 					</tr>
 				</thead>
-					<?php
+						<?php
 						// display the Product table
 	          $sql1 = "SELECT * FROM `mealplan` b,`billofmeal` c,`product` d,`inventory` e
 						where b.weekno = $week and b.dayno=$day and b.mealid =c.mealid and c.productcd = d.pd_cd and d.pd_cd= e.pd_cd";
@@ -97,11 +95,24 @@ include_once "connection.php";
 	          } else
 	              echo "0 results";
 					?>
+					<tr>
+					<td ><input type="text" id="product1" value="Apple" />
+						<?php
+						$sql="Select * from "
+
+
+					</td>
+					<td id="product"><p>2</p>  </td>
+					<td><input name="quantityinput[]"type = "text"></td>
+					<td></td>
+					<td></td>
+						</tr>
 				</table>
 				<input id = "submit" type = "submit" name="submit" value = "Add Products" />
 				 <input type="button" value="添 加 行" class="button_add" onclick="javascript:addRow()">
-			</form>
 
+			</form>
+<button id="btn"> Click</button>
 </div>
 	</body>
 </html>
