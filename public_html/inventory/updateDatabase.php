@@ -20,42 +20,55 @@ include_once "connection.php";
 <!DOCTYPE html>
 <html>
 <head>
-	  <meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 	<script
 	  src="https://code.jquery.com/jquery-3.2.1.min.js"
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 	  crossorigin="anonymous"></script>
 	<script>
-	$(document).ready(function(){
-		$("#product1").change(function(){
-			$("#product").load("data.txt");
-		});
-	});
+
+
+function showProudct(str){
+	if(str==""){
+		document.getElementById("txtHint[]").innerHTML="";
+    return;
+	}
+if (window.XMLHttpRequest) {
+	// code for IE7+, Firefox, Chrome, Opera, Safari
+	xmlhttp=new XMLHttpRequest();
+} else { // code for IE6, IE5
+	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function() {
+	if (this.readyState==4 && this.status==200) {
+		document.getElementById("txtHint[]").innerHTML=this.responseText;
+	}
+};
+xmlhttp.open("GET","data.php?q="+str,true);
+xmlhttp.send();
+};
 	function addRow() {
-	var temp = document.getElementById("temp");
-	var names = ['pd_zh[]', 'available[]','pd_name[]','pd_unit[]','pd_id[]'];
+	var names =['productid[]'];
 	var table = document.getElementById("rounded-corner");
+	if ($("#rounded-corner").find("tr").last().value="")
+	{ alert("the last row is null");
+	}
 	var rowCount = table.rows.length;
-	//temp.innerHTML = "Current row size = " + rowCount;
 	var row = table.insertRow(rowCount);
-	var colCount = table.rows[0].cells.length;
+		row.id = "txtHint[]"
+  var colCount = 1;
 	for (var i=0; i<colCount; i++)
 	{
 			var newcell = row.insertCell(i);
 			var newentry = document.createElement('input');
 			newentry.type = "text";
-
-
-			// set name
 			newentry.name = names[i];
-
 			newcell.appendChild(newentry);
-	}
-
-		//	temp.innerHTML += "\tAfter insertCell = " + table.rows.length;
+			//	temp.innerHTML += "\tAfter insertCell = " + table.rows.length;
 // document.getElementById("temp").innerHTML = document.getElementById("rounded-corner").rows.length;
 
+ }
  }
 	</script>
 </head>
@@ -83,7 +96,7 @@ include_once "connection.php";
 	              while($row = $result->fetch_assoc())
 	              {
 	                echo '
-	                  <tr id="temp">
+	                 <tr>
 	                    <td>'.$row['pd_zh'].'</td>
 	                    <td>'.$row['available'].'</td>
 	                    <td><input name="quantityinput[]"type = "text"></td>
@@ -93,25 +106,18 @@ include_once "connection.php";
 	                    </tr>';
 	              }
 	          } else
-	              echo "0 results";
+	              echo "00 results";
 					?>
+					<tr id="txtHint[]">
+					<td><input type="text" name="productid[]" onchange="showProudct(this.value)"/></td>
+					</tr>
 					<tr>
-					<td ><input type="text" id="product1" value="Apple" />
-						<?php
-						$sql="Select * from "
 
-
-					</td>
-					<td id="product"><p>2</p>  </td>
-					<td><input name="quantityinput[]"type = "text"></td>
-					<td></td>
-					<td></td>
-						</tr>
+					</tr>
 				</table>
 				<input id = "submit" type = "submit" name="submit" value = "Add Products" />
-				 <input type="button" value="添 加 行" class="button_add" onclick="javascript:addRow()">
-
-			</form>
+				<input type="button" value="添 加 行" class="button_add" onclick="javascript:addRow()">
+				</form>
 <button id="btn"> Click</button>
 </div>
 	</body>
